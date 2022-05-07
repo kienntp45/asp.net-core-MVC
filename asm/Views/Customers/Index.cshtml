@@ -1,0 +1,95 @@
+﻿@model IEnumerable<asm.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+
+</p>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<table class="table">
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PassWord)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Position)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th></th>
+            </tr>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PassWord)
+                    </td>
+                    <td>
+                        @{
+                            if (item.Position == 1)
+                            {
+                                <p>admin</p>
+                            }
+                            else
+                            {
+                                <p>nhan vien</p>
+                            }
+                        }
+                    </td>
+                    <td>
+                   
+                        @{
+                            if (item.Status == true)
+                            {
+                                <p>Đang làm</p>
+                            }
+                            else
+                            {
+                                <p>Nghỉ việc</p>
+                            }
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+</table>
